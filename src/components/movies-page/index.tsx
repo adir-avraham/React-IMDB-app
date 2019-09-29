@@ -1,7 +1,7 @@
 import React from 'react'
 import axios from 'axios'
 import MovieSearch from '../search'
-
+import MoviesList from '../movies-list'
 
 export default class MoviesPage extends React.Component<any, any> {
     constructor(props:any) {
@@ -11,7 +11,7 @@ export default class MoviesPage extends React.Component<any, any> {
   
         
      }
-     
+
     }
 
     componentDidMount: any = (searchValue: any) => {
@@ -24,12 +24,12 @@ export default class MoviesPage extends React.Component<any, any> {
 
 
     render() {
-    
-        const {searchValue} = this.props
+        
+        const {searchValue } = this.props
         return (
             <div>
             <MovieSearch componentDidMount={this.componentDidMount} searchValue={searchValue} />
-
+            <MoviesList movies={this.state.movies}/>
             
             </div>
         )
