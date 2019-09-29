@@ -6,29 +6,32 @@ import MoviesList from '../movies-list'
 export default class MoviesPage extends React.Component<any, any> {
     constructor(props:any) {
         super(props)
-    this.state = { 
+
+        this.state = { 
         movies: [],
-  
+   
         
      }
 
     }
-
-    componentDidMount: any = (searchValue: any) => {
+    
+    getMoviesByName: any = (searchValue: any) => {
         axios.get(`http://www.omdbapi.com/?apikey=8036fcb6&s=${searchValue}`).then((response: any)=>{
          console.log("from the aba>>>>", searchValue)   
-         this.setState({movies: response.data.Search})
+         
+         this.setState({movies:  response.data.Search})
          console.log("movies=>", this.state.movies)
         })
+        
     }
 
 
     render() {
-        
-        const {searchValue } = this.props
+   
+     
         return (
             <div>
-            <MovieSearch componentDidMount={this.componentDidMount} searchValue={searchValue} />
+            <MovieSearch getMoviesByName={this.getMoviesByName} />
             <MoviesList movies={this.state.movies}/>
             
             </div>

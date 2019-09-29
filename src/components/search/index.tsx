@@ -10,7 +10,7 @@ export default class MovieSearch extends React.Component<any, any> {
     
     render() {
         
-        const {searchValue, componentDidMount} = this.props;
+        const {searchValue, getMoviesByName} = this.props;
 
         return (
             <div>
@@ -24,7 +24,7 @@ export default class MovieSearch extends React.Component<any, any> {
             }}/>
             
             <button onClick={()=>{
-            componentDidMount(this.state.searchValue)
+            getMoviesByName(this.state.searchValue)
               
             }}>SEARCH</button>
             

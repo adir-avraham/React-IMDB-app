@@ -10,6 +10,8 @@ export default class Movie extends React.Component<any, any> {
         return (
       
 
+                <div className="container">
+                    <div className="row">
 
                 <div className="card col-3" >
                     <img src={Poster} className="card-img-top" alt="..."/>
@@ -23,6 +25,8 @@ export default class Movie extends React.Component<any, any> {
                         </ul>
                 </div>
 
+                    </div>
+                </div>
 
 
 
