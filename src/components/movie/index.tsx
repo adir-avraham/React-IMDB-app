@@ -9,12 +9,9 @@ export default class Movie extends React.Component<any, any> {
         const {Title, Year, imdbID, Type, Poster} = this.props
         return (
       
-
-                <div className="container">
-                    <div className="row">
-           
-                <div className="card col-3" >
-                    <img src={Poster} className="card-img-top" alt="..."/>
+                
+                <div className="card" style={{width: "18rem"}}  >
+                    <img src={Poster} className="card-img-top" alt="image not available"/>
                         <div className="card-body">
                             <h5 className="card-title">{Title}</h5>
                         </div>
@@ -25,8 +22,7 @@ export default class Movie extends React.Component<any, any> {
                         </ul>
                 </div>
 
-                    </div>
-                </div>
+              
 
 
 
