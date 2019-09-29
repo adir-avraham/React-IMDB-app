@@ -9,6 +9,7 @@ export default class MoviesList extends React.Component<any, any> {
 
         return (
             <div>
+              
               {movies.map((movie:any)=> <Movie  key={movie.imdbID}  {...movie}/>)}  
             </div>
         )

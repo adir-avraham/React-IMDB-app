@@ -12,7 +12,7 @@ export default class Movie extends React.Component<any, any> {
 
                 <div className="container">
                     <div className="row">
-
+           
                 <div className="card col-3" >
                     <img src={Poster} className="card-img-top" alt="..."/>
                         <div className="card-body">
