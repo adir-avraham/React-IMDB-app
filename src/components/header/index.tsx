@@ -1,15 +1,14 @@
-import 'bootstrap/dist/css/bootstrap.min.css';
 import React from 'react';
 
 
 
 export default class Header extends React.Component<any, any> {
-    
+
     render() {
-        const {title} = this.props
+        const { title, style } = this.props
         return (
             <div>
-                <h1>{title}</h1>
+                <h1 style={style}>{title}</h1>
             </div>
         )
     }

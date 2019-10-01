@@ -1,45 +1,41 @@
+import AppBar from '@material-ui/core/AppBar';
+import Button from '@material-ui/core/Button';
+import CssBaseline from '@material-ui/core/CssBaseline';
 import React from 'react'
 import { Link } from "react-router-dom";
+import Toolbar from '@material-ui/core/Toolbar';
+import Typography from '@material-ui/core/Typography';
+
+
+
 
 export default class Navbar extends React.Component<any, any> {
 
 
-    render() {
+  render() {
 
+    return (
 
-        return (
-
-
-            <div>
-
-
-<nav className="navbar navbar-expand-lg navbar-light bg-light">
-
-  <div className="collapse navbar-collapse" id="navbarNav">
-    <ul className="navbar-nav">
-      <li className="nav-item"> <button className="btn btn-light mr-2"> 
-      <Link to="/home-page">Home page</Link>
-
-    
-      </button>
-      </li>
-
-      <li className="nav-item">
-      <button className="btn btn-light">
-      <Link to="/movies-page">Movies page</Link>
-       
-
-      </button>
-      </li>
-    </ul>
-  </div>
-</nav>
-
-
-
-
-            </div>
-        )
-
-    }
+      <div>
+        <CssBaseline />
+        <AppBar position="static" color="default" elevation={0} style={{ borderBottom: '1px solid rgba(0, 0, 0, 0.12)' }}>
+          <Toolbar style={{ flexWrap: 'wrap' }}>
+            <Typography align="left" variant="h6" color="inherit" noWrap style={{ flexGrow: 1 }}>
+              IMDB APP</Typography>
+            <nav>
+              <Link to="/home-page" color="textPrimary" style={{ margin: 2 }}>
+                <Button> HOME </Button>
+              </Link>
+              <Link to="/movies-page" color="textPrimary" style={{ margin: 2 }}>
+                <Button> MOVIES </Button>
+              </Link>
+            </nav>
+            <Button href="https://www.imdb.com/" target="_blanck" color="primary" variant="outlined" style={{ margin: 2 }}>
+              IMDB
+            </Button>
+          </Toolbar>
+        </AppBar>
+      </div>
+    )
+  }
 }

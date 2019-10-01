@@ -5,33 +5,33 @@ import Typography from '@material-ui/core/Typography';
 
 
 export default class MovieSearch extends React.Component<any, any> {
-        
+
     state = {
-            searchValue: ""
-        }
-    
+        searchValue: ""
+    }
+
     render() {
-    
-        const {searchValue, getMoviesByName} = this.props;
+        const { searchValue, getMoviesByName } = this.props;
 
         return (
-            <div>           
-            <Typography variant="h5" align="center" color="inherit" paragraph>
-            SEARCH MOVIE
+            <div>
+                <Typography variant="h5" align="center" color="textSecondary" paragraph>
+                    Search movie
             </Typography>
 
-            <TextField value={searchValue} onChange={(e)=>{
-            const searchValue = e.target.value
-            this.setState({searchValue})
-            }}
-            label="Movie title"
-            style={{marginLeft: "2px", marginRight: "2px", marginTop: "4px"}}
-            margin="dense"
-            variant="outlined"/>
+                <TextField value={searchValue} onChange={(e) => {
+                    const searchValue = e.target.value
+                    this.setState({ searchValue })
+                }}
+                    label="Movie title"
+                    style={{ marginLeft: "2px", marginRight: "2px", marginTop: "4px" }}
+                    margin="dense"
+                    variant="outlined" />
 
-            <Button variant="contained" color="primary" style={{ margin:"5.5px"}} onClick={()=>{
-            getMoviesByName(this.state.searchValue)}}>
-            SEARCH </Button>          
+                <Button variant="contained" color="primary" style={{ margin: "5.5px" }} onClick={() => {
+                    getMoviesByName(this.state.searchValue)
+                }}>
+                    SEARCH </Button>
             </div>
         )
     }

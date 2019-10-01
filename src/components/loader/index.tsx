@@ -1,4 +1,6 @@
 import React from 'react';
+import CircularProgress from '@material-ui/core/CircularProgress';
+
 
 
 export default class Loader extends React.Component<any, any> {
@@ -8,12 +10,9 @@ export default class Loader extends React.Component<any, any> {
 
         return (
 
-            <div className="spinner-border text-primary" role="status">
-                <span className="sr-only">Loading...</span>
-            </div>
+            <CircularProgress style={{ margin: "4px" }} />
 
-
-            
         )
     }
 }
+
