@@ -4,6 +4,7 @@ import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Grid from '@material-ui/core/Grid';
+import { Link } from 'react-router-dom'; 
 import Typography from '@material-ui/core/Typography';
 import React from 'react';
 
@@ -34,7 +35,7 @@ export default class Movie extends React.Component<any, any> {
             <Typography gutterBottom variant="h5" component="h2">{Title}</Typography>
             <Typography>Year: {Year}</Typography>
             <Typography>Type: {Type}</Typography>
-            <Typography>imdbID: {imdbID}</Typography>
+            <Typography><Link to={`/movie-page/${imdbID}`}><Button size="small" color="primary">Go to movie page</Button></Link> </Typography>
           </CardContent>
           <CardActions>
             <a href={`https://www.imdb.com/title/${imdbID}/`} target="_blanck">
