@@ -30,7 +30,6 @@ export class MoviePage extends React.Component<any, any> {
         this.setState({ loading: true })
         axios.get(`http://www.omdbapi.com/?apikey=8036fcb6&i=${imdbID}`).then((res: any)  => {
             this.setState({ currentMovie: res.data, loading: false })
-            console.log(res.data)
         })
     }
 
@@ -86,11 +85,6 @@ export class MoviePage extends React.Component<any, any> {
                     }} >Save</Button>
                 </CardActions>
             </Card>
-
-
-            // <div>
-            //     <h1>this is movie {JSON.stringify(this.state.currentMovie)}</h1>
-            // </div>
         )
     }
 }
@@ -101,10 +95,10 @@ const mapStateToProps = (state: any) => {
     return state;
 } 
 
-const mapDispatchToProps = (diuspatch: any) => {
+const mapDispatchToProps = (dispatch: any) => {
     return {
         onSaveComment: (comment: any) => {
-            diuspatch(saveCommentAction(comment))
+            dispatch(saveCommentAction(comment))
         }
     };
 }

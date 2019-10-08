@@ -6,23 +6,30 @@ export class FeedbackPage extends React.Component<any, any> {
 
 
     render() {
-
+        const {comments} = this.props
 
         return (
             <div>
                 <Header title="FEEDBACK PAGE" style={{ margin: "50px" }} />
-                <p>{this.props.currentComment}</p>
                 
-              
+                    
+                {comments.map((item:any) => 
+                    <p>{item}</p>
+                    )}
+                                
+     
             </div>
         )
     }
 }
 
+
+
+
 const mapStateToProps = (state: any) => {
-    
+    const {comments} = state;
     return {
-    currentComment: state.comment
+    comments
     }
 } 
 
