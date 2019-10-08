@@ -3,10 +3,15 @@ import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
+import FavoriteIcon from '@material-ui/icons/Favorite';
 import Grid from '@material-ui/core/Grid';
+import IconButton from '@material-ui/core/IconButton';
 import { Link } from 'react-router-dom'; 
+import YouTubeIcon from '@material-ui/icons/YouTube';
 import Typography from '@material-ui/core/Typography';
 import React from 'react';
+import { CardHeader } from '@material-ui/core';
+import MoreVertIcon from '@material-ui/icons/MoreVert';
 
 
 
@@ -27,6 +32,16 @@ export default class Movie extends React.Component<any, any> {
     return (
       <Grid item xs={12} sm={6} md={4}>
         <Card style={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
+          <CardHeader action={
+            <Link to={`/movie-page/${imdbID}`}>
+
+           <IconButton aria-label="settings">
+           <MoreVertIcon />
+         </IconButton>
+            </Link>
+          }
+          title=""
+          />
           <CardMedia
             style={{ paddingTop: '56.25%' }}
             image={src}
@@ -35,14 +50,17 @@ export default class Movie extends React.Component<any, any> {
             <Typography gutterBottom variant="h5" component="h2">{Title}</Typography>
             <Typography>Year: {Year}</Typography>
             <Typography>Type: {Type}</Typography>
-            <Typography><Link to={`/movie-page/${imdbID}`}><Button size="small" color="primary">Go to movie page</Button></Link> </Typography>
+
           </CardContent>
           <CardActions>
-            <a href={`https://www.imdb.com/title/${imdbID}/`} target="_blanck">
+          <IconButton aria-label="add to favorites">
+          <FavoriteIcon/>
+        </IconButton>
+            {/* <a href={`https://www.imdb.com/title/${imdbID}/`} target="_blanck">
               <Button size="small" color="primary">IMDB</Button>
-            </a>
+            </a> */}
             <a href={`https://www.youtube.com/results?search_query=${Title}`} target="_blanck">
-              <Button size="small" color="primary">YouTube</Button>
+              <Button size="small" color="primary"><YouTubeIcon color="error"/></Button>
             </a>
           </CardActions>
         </Card>

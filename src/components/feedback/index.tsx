@@ -10,7 +10,7 @@ export class FeedbackPage extends React.Component<any, any> {
 
         return (
             <div>
-                <Header title="FEEDBACK PAGE" style={{ margin: "50px" }} />
+                <Header title="FEEDBACKS PAGE" style={{ margin: "50px" }} />
                 
                     
                 {comments.map((item:any) => 
