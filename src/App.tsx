@@ -16,7 +16,6 @@ const App: React.FC = () => {
     <div className="App">
       <BrowserRouter>
         <Navbar />
-        <Header title="OMDB API" style={{ margin: "50px" }} />
 
         <Switch>
           <Route path="/movies-page" component={MoviesPage} />

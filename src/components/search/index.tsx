@@ -1,4 +1,5 @@
 import Button from '@material-ui/core/Button';
+import Header from '../header'
 import React from 'react';
 import TextField from '@material-ui/core/TextField';
 import Typography from '@material-ui/core/Typography';
@@ -15,6 +16,7 @@ export default class MovieSearch extends React.Component<any, any> {
 
         return (
             <div>
+                <Header title="MOVIES PAGE" style={{ margin: "50px" }} />
                 <Typography variant="h5" align="center" color="textSecondary" paragraph>
                     Search movie
             </Typography>
