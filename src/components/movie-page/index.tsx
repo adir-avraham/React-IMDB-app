@@ -1,21 +1,26 @@
 import React from 'react';
+import { saveCommentAction } from '../../redux/actions'
 import axios from 'axios';
 import Button from '@material-ui/core/Button';
 import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
+import { connect } from 'react-redux'
 import { Link } from 'react-router-dom';
+import TextField from '@material-ui/core/TextField';
 import Typography from '@material-ui/core/Typography';
 import Loader from '../loader'
 
 
 
-export default class MoviePage extends React.Component<any, any> {
+
+export class MoviePage extends React.Component<any, any> {
     constructor(props: any) {
         super(props)
         this.state = { currentMovie: "" ,
-        loading: false
+        loading: false,
+        comment: null,
     }
 
     }
@@ -30,8 +35,9 @@ export default class MoviePage extends React.Component<any, any> {
     }
 
     render() {
+        const { onSaveComment } = this.props
         if (this.state.loading) return <Loader />
-        const { Year, Type, imdbID, Title, Poster, Actors, Genre, Country, Language, Plot, Runtime, imdbVotes, imdbRating } = this.state.currentMovie
+        const { Year, Type, Title, Poster, Actors, Genre, Country, Language, Plot, Runtime, imdbVotes, imdbRating } = this.state.currentMovie
         const defaultPicture = "https://images.immediate.co.uk/production/volatile/sites/3/2017/11/imagenotavailable1-39de324.png?quality=90&resize=620,413"
         let src = null;
         if (Poster === "N/A") {
@@ -63,12 +69,21 @@ export default class MoviePage extends React.Component<any, any> {
                 
                 </CardContent>
                 <CardActions>
-                    <a href={`https://www.imdb.com/title/${imdbID}/`} target="_blanck">
-                        <Button size="small" color="primary">IMDB</Button>
-                    </a>
-                    <a href={`https://www.youtube.com/results?search_query=${Title}`} target="_blanck">
-                        <Button size="small" color="primary">YouTube</Button>
-                    </a>
+                    <TextField
+                        id="standard-multiline-static"
+                        label="Feedback"
+                        placeholder="write a comment..."
+                        multiline
+                        rows="4"
+                        style={{marginLeft: "2px", marginRight: "2px", width: 200  }}
+                        margin="normal"
+                        onChange={(e)=>{
+                        this.setState({comment: e.target.value})
+                        }}
+                    />
+                    <Button size="small" color="primary" onClick={()=>{
+                        onSaveComment(this.state.comment)
+                    }} >Save</Button>
                 </CardActions>
             </Card>
 
@@ -80,3 +95,19 @@ export default class MoviePage extends React.Component<any, any> {
     }
 }
 
+
+const mapStateToProps = (state: any) => {
+
+    return state;
+} 
+
+const mapDispatchToProps = (diuspatch: any) => {
+    return {
+        onSaveComment: (comment: any) => {
+            diuspatch(saveCommentAction(comment))
+        }
+    };
+}
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(MoviePage) 

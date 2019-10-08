@@ -1,6 +1,5 @@
 import './App.css';
 import FeedbackPage from './components/feedback'
-import Header from './components/header';
 import HomePage from './components/home-page'
 import MoviePage from './components/movie-page'
 import MoviesPage from './components/movies-page'
