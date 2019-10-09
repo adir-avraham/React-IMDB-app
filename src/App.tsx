@@ -23,6 +23,7 @@ const App: React.FC = () => {
           <Route path="/movie-page/:imdbID" component={MoviePage} />
           <Route path="/feedback" component={FeedbackPage} />
           <Route path="/favourites" component={Favourites} />
+          <Route path="**" component={HomePage} />
         </Switch>
 
       </BrowserRouter>

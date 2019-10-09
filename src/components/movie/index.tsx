@@ -16,12 +16,13 @@ import MoreVertIcon from '@material-ui/icons/MoreVert';
 import React from 'react';
 
 
+let colorFavBtn = "default"
 
 export class Movie extends React.Component<any, any> {
 
-
+  
   render() {
-    const { Title, Year, imdbID, Type, Poster } = this.props
+    const { Title, Year, imdbID, Type, Poster, favourites } = this.props
     const defaultPicture = "https://images.immediate.co.uk/production/volatile/sites/3/2017/11/imagenotavailable1-39de324.png?quality=90&resize=620,413"
     let src = null;
     if (Poster === "N/A") {
@@ -29,13 +30,12 @@ export class Movie extends React.Component<any, any> {
     } else {
       src = Poster
     }
-
+    let colorFavBtn = "error"
     return (
       <Grid item xs={12} sm={6} md={4}>
-        <Card style={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
+        <Card style={{ height: '100%', display: 'flex', flexDirection: 'column'}}>
           <CardHeader action={
             <Link to={`/movie-page/${imdbID}`}>
-
            <IconButton aria-label="settings">
            <MoreVertIcon />
          </IconButton>
@@ -51,15 +51,20 @@ export class Movie extends React.Component<any, any> {
             <Typography gutterBottom variant="h5" component="h2">{Title}</Typography>
             <Typography>Year: {Year}</Typography>
             <Typography>Type: {Type}</Typography>
-
           </CardContent>
           <CardActions>
           <IconButton aria-label="add to favorites" onClick={()=>{
+            favourites.forEach((movie: any) => {
+              if (movie.imdbID === this.props.imdbID) {
+                console.log("exsit");
+              }
+            });
+            console.log("thiis.props=>", this.props)
+            console.log("fav", favourites)
             const { addToFavourites } = this.props.actions
             addToFavourites(this.props)
-            console.log(this.props)
           }}>
-          <FavoriteIcon/>
+          <FavoriteIcon color="inherit"/>
         </IconButton>
             {/* <a href={`https://www.imdb.com/title/${imdbID}/`} target="_blanck">
               <Button size="small" color="primary">IMDB</Button>
@@ -76,8 +81,8 @@ export class Movie extends React.Component<any, any> {
 
 
 const mapStateToProps = (state: any) => {
-
-  return {};
+  const { favourites } = state
+  return {favourites};
 }
 
 const mapDispatchToProps = (dispatch: any) => {
@@ -92,4 +97,4 @@ const mapDispatchToProps = (dispatch: any) => {
 }
 
 
-export default connect(null, mapDispatchToProps)(Movie) 
+export default connect(mapStateToProps, mapDispatchToProps)(Movie) 

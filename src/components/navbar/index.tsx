@@ -31,10 +31,10 @@ export default class Navbar extends React.Component<any, any> {
               </Link>
               <Link to='/feedback/' color="textPrimary" style={{ margin: 2 }}>
                 <Button> FEEDBACKS </Button>
-              </Link>    
+              </Link>   
               <Link to='/favourites/' color="textPrimary" style={{ margin: 2 }}>
                 <Button> FAVOURITES </Button>
-              </Link>             
+              </Link>              
             </nav>
             <Button href="https://www.imdb.com/" target="_blanck" color="primary" variant="outlined" style={{ margin: 2 }}>
               IMDB

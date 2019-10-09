@@ -18,7 +18,7 @@ export class MoviePage extends React.Component<any, any> {
     this.state = {
       currentMovie: "",
       loading: false,
-      comment: null,
+      comment: "",
     }
 
   }
@@ -62,32 +62,32 @@ export class MoviePage extends React.Component<any, any> {
               <Grid item xs={12} sm container>
                 <Grid item xs container direction="column" spacing={2}>
                   <Grid item xs>
-                    <Typography gutterBottom variant="subtitle1">
+                    <Typography style={{textAlign:"left"}} gutterBottom variant="subtitle1">
                       {Title}
                     </Typography>
-                    <Typography variant="body2" gutterBottom>
-                      {Year}
+                    <Typography style={{textAlign:"left"}} variant="body2" gutterBottom>
+                     Year: {Year}
                     </Typography>
-                    <Typography variant="body2" gutterBottom>
-                      {Actors}
+                    <Typography style={{textAlign:"left"}} variant="body2" gutterBottom>
+                     Actors: {Actors}
                     </Typography>
-                    <Typography variant="body2" gutterBottom>
-                      {Genre}
+                    <Typography style={{textAlign:"left"}} variant="body2" gutterBottom>
+                     Genre: {Genre}
                     </Typography>
-                    <Typography variant="body2" gutterBottom>
-                      {Language}
+                    <Typography style={{textAlign:"left"}} variant="body2" gutterBottom>
+                     Language: {Language}
                     </Typography>
-                    <Typography variant="body2" gutterBottom>
-                      {Country}
+                    <Typography style={{textAlign:"left"}} variant="body2" gutterBottom>
+                     Country: {Country}
                     </Typography>
-                    <Typography variant="body2" gutterBottom>
-                      {Runtime}
+                    <Typography style={{textAlign:"left"}} variant="body2" gutterBottom>
+                     Runtime: {Runtime}
                     </Typography>
-                    <Typography variant="body2" gutterBottom>
-                      {imdbRating}
+                    <Typography style={{textAlign:"left"}} variant="body2" gutterBottom>
+                     imdbRating: {imdbRating}
                     </Typography>
-                    <Typography variant="body2" gutterBottom>
-                      {Plot}
+                    <Typography style={{textAlign:"left"}} variant="body2" gutterBottom>
+                     Plot: {Plot}
                     </Typography>
                     {/* <Typography variant="body2" color="textSecondary">
                         ID: 1030114
@@ -114,10 +114,11 @@ export class MoviePage extends React.Component<any, any> {
                   onChange={(e) => {
                     this.setState({ comment: e.target.value })
                   }}
+                  value={this.state.comment}
                 />
                 <Button style={{ margin: "35px" }} size="small" color="primary" onClick={() => {
                   onSaveComment(this.state.comment)
-                }} >Save</Button>
+                }} >Add</Button>
               </Grid>
             </Grid>
           </Paper>

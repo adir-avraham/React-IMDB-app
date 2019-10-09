@@ -12,12 +12,11 @@ export class FeedbackPage extends React.Component<any, any> {
             <div>
                 <Header title="FEEDBACKS PAGE" style={{ margin: "50px" }} />
                 
-                    
-                {comments.map((item:any) => 
-                    <p>{item}</p>
+                
+                {comments.map((item:any, index: number) => 
+                    <p key={`com_${index}`}>{item}</p>
                     )}
                                 
-     
             </div>
         )
     }
