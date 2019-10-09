@@ -38,4 +38,4 @@ const mapDispatchToProps = (diuspatch: any) => {
 }
 
 
-export default connect(mapStateToProps, mapDispatchToProps)(FeedbackPage) 
+export default connect(mapStateToProps, null)(FeedbackPage) 

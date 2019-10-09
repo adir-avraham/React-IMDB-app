@@ -1,4 +1,5 @@
 import './App.css';
+import Favourites from './components/favourites'
 import FeedbackPage from './components/feedback'
 import HomePage from './components/home-page'
 import MoviePage from './components/movie-page'
@@ -21,7 +22,7 @@ const App: React.FC = () => {
           <Route path="/home-page" component={HomePage} />
           <Route path="/movie-page/:imdbID" component={MoviePage} />
           <Route path="/feedback" component={FeedbackPage} />
-         
+          <Route path="/favourites" component={Favourites} />
         </Switch>
 
       </BrowserRouter>

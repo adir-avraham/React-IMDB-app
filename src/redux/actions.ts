@@ -8,3 +8,12 @@ export const saveCommentAction = (comment: any) => {
     }
 
 } 
+
+export const addMovieToFavouritesAction = (movie: any) => {
+
+    return {
+        type: Actions.ADD_MOVIE_TO_FAVOURITES,
+        payload: { movie }
+    }
+
+}

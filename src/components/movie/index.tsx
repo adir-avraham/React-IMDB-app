@@ -1,22 +1,23 @@
+import { addMovieToFavouritesAction } from '../../redux/actions'
 import Button from '@material-ui/core/Button';
 import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
+import { CardHeader } from '@material-ui/core';
 import CardMedia from '@material-ui/core/CardMedia';
+import { connect } from 'react-redux'
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import Grid from '@material-ui/core/Grid';
 import IconButton from '@material-ui/core/IconButton';
 import { Link } from 'react-router-dom'; 
 import YouTubeIcon from '@material-ui/icons/YouTube';
 import Typography from '@material-ui/core/Typography';
-import React from 'react';
-import { CardHeader } from '@material-ui/core';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
+import React from 'react';
 
 
 
-
-export default class Movie extends React.Component<any, any> {
+export class Movie extends React.Component<any, any> {
 
 
   render() {
@@ -53,7 +54,11 @@ export default class Movie extends React.Component<any, any> {
 
           </CardContent>
           <CardActions>
-          <IconButton aria-label="add to favorites">
+          <IconButton aria-label="add to favorites" onClick={()=>{
+            const { addToFavourites } = this.props.actions
+            addToFavourites(this.props)
+            console.log(this.props)
+          }}>
           <FavoriteIcon/>
         </IconButton>
             {/* <a href={`https://www.imdb.com/title/${imdbID}/`} target="_blanck">
@@ -68,3 +73,23 @@ export default class Movie extends React.Component<any, any> {
     )
   }
 }
+
+
+const mapStateToProps = (state: any) => {
+
+  return {};
+}
+
+const mapDispatchToProps = (dispatch: any) => {
+  return {
+    actions:{
+      addToFavourites: (movie: any)=>{
+
+        dispatch(addMovieToFavouritesAction(movie))
+      } 
+    }
+  } 
+}
+
+
+export default connect(null, mapDispatchToProps)(Movie) 
