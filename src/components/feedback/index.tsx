@@ -14,7 +14,7 @@ export class FeedbackPage extends React.Component<any, any> {
                 
                 
                 {comments.map((item:any, index: number) => 
-                    <p key={`com_${index}`}>{item}</p>
+                    <p key={`com_${index}`}>{item.comment}</p>
                     )}
                                 
             </div>

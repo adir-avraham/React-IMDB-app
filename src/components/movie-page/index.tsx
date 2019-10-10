@@ -18,7 +18,7 @@ export class MoviePage extends React.Component<any, any> {
     this.state = {
       currentMovie: "",
       loading: false,
-      comment: "",
+      comments: [],
     }
 
   }
@@ -30,11 +30,12 @@ export class MoviePage extends React.Component<any, any> {
       this.setState({ currentMovie: res.data, loading: false })
     })
   }
-
+  
   render() {
     const { onSaveComment, comments } = this.props
+    const { comment } = this.state
     if (this.state.loading) return <Loader />
-    const { Year, Type, Title, Poster, Actors, Genre, Country, Language, Plot, Runtime, imdbVotes, imdbRating } = this.state.currentMovie
+    const { Year, Type, Title, Poster, Actors, Genre, Country, Language, Plot, Runtime, imdbVotes, imdbRating, imdbID } = this.state.currentMovie
     const defaultPicture = "https://images.immediate.co.uk/production/volatile/sites/3/2017/11/imagenotavailable1-39de324.png?quality=90&resize=620,413"
     let src = null;
     if (Poster === "N/A") {
@@ -42,13 +43,17 @@ export class MoviePage extends React.Component<any, any> {
     } else {
       src = Poster
     }
+    const currentComments = comments.filter((comment: any)=>
+    comment.imdbID === imdbID
+    )
+    
     return (
       <div>
 
         <div style={{ flexGrow: 1 }}>
           <Paper style={{ padding: "4px", margin: "auto", maxWidth: 700, height: 350 }}>
             <Grid container spacing={2}>
-              <Grid item>
+              <Grid item key={imdbID}>
                 <ButtonBase style={{ width: 228, height: 328 }}>
                   <img style={{
                     margin: 'auto',
@@ -112,28 +117,29 @@ export class MoviePage extends React.Component<any, any> {
                   style={{ marginLeft: "2px", marginRight: "2px", width: 200 }}
                   margin="normal"
                   onChange={(e) => {
-                    this.setState({ comment: e.target.value })
+                    this.setState({ comment: {imdbID: imdbID, comment: e.target.value} })
                   }}
-                  value={this.state.comment}
+                  //value={this.state.comment}
                 />
                 <Button style={{ margin: "35px" }} size="small" color="primary" onClick={() => {
-                  onSaveComment(this.state.comment)
+                  onSaveComment(comment)
                 }} >Add</Button>
+              {currentComments.map((comment: any, index: number)=><p key={`com${index}`}>{comment.comment}</p>)}
               </Grid>
             </Grid>
           </Paper>
         </div>
-
       </div>
     )
   }
 }
 
-
 const mapStateToProps = (state: any) => {
+  const {comments} = state;
+   
+    return { comments }
 
-  return {};
-}
+  }
 
 const mapDispatchToProps = (dispatch: any) => {
   return {
@@ -144,4 +150,4 @@ const mapDispatchToProps = (dispatch: any) => {
 }
 
 
-export default connect(null, mapDispatchToProps)(MoviePage) 
+export default connect(mapStateToProps, mapDispatchToProps)(MoviePage) 
