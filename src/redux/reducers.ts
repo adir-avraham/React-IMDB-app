@@ -20,6 +20,14 @@ export default function root(state = initialState, action: any) {
             const { favourites } = state;
             return { ...state, favourites: [...favourites, movie] }
         }
+        case Actions.DELETE_MOVIE_FROM_FAVOURITES: {
+            const {favourites} = state;
+            const { movieID } = action.payload
+            const newFavourites = favourites.filter((movie: any) =>{
+                return movie.imdbID !== movieID
+            })
+            return {...state, favourites: newFavourites}
+        }
         default: {
             return state;
         }

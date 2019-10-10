@@ -59,7 +59,7 @@ export class Movie extends React.Component<any, any> {
                 console.log("exsit");
               }
             });
-            console.log("thiis.props=>", this.props)
+            console.log("this.props=>", this.props)
             console.log("fav", favourites)
             const { addToFavourites } = this.props.actions
             addToFavourites(this.props)

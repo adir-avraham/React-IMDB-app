@@ -1,6 +1,8 @@
-import { connect } from 'react-redux'
-import Header from '../header'
-import React from 'react'
+import { connect } from 'react-redux';
+import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
+import { deleteMovieFromFavouritesAction } from '../../redux/actions'
+import Header from '../header';
+import React from 'react';
 
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
@@ -9,20 +11,22 @@ import ListItemText from '@material-ui/core/ListItemText';
 import ListItemAvatar from '@material-ui/core/ListItemAvatar';
 import Avatar from '@material-ui/core/Avatar';
 import Typography from '@material-ui/core/Typography';
+import { Button } from '@material-ui/core';
 
 
 export class Favourites extends React.Component<any, any> {
 
     render() {
         const { favourites } = this.props;
+    
         return (
             <div>
                 <Header title="FAVOURITES PAGE" style={{ margin: "50px" }} />
                 <List style={{ width: "100%", maxWidth: 360 }}>
                     {favourites.map((movie: any) => { 
-                        const { Title, Poster, Year } = movie
+                        const { Title, Poster, Year, imdbID } = movie
                         return (
-                        <ListItem alignItems="flex-start">
+                        <ListItem key={imdbID} alignItems="flex-start">
                         <ListItemAvatar>
                         <Avatar alt="Remy Sharp" src={Poster} />
                         </ListItemAvatar>
@@ -41,6 +45,11 @@ export class Favourites extends React.Component<any, any> {
                             </React.Fragment>
                         }
                         />
+                        <Button onClick={()=>{
+                        
+                            const { deleteFromFavourites } = this.props
+                            deleteFromFavourites(imdbID)
+                        }} ><DeleteForeverIcon color="error"/></Button>
                         </ListItem>
                     //<Divider variant="inset" component="li" />
                     )  
@@ -59,9 +68,11 @@ const mapStateToProps = (state: any) => {
 
 const mapDispatchToProps = (dispatch: any) => {
     return {
-
+        deleteFromFavourites: (movieID: any) => {
+            dispatch(deleteMovieFromFavouritesAction(movieID))
     }
+}
 }
 
 
-export default connect(mapStateToProps, null)(Favourites) 
+export default connect(mapStateToProps, mapDispatchToProps)(Favourites) 
