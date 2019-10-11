@@ -1,10 +1,12 @@
 import './App.css';
-import Favourites from './components/favourites'
-import FeedbackPage from './components/feedback'
-import HomePage from './components/home-page'
-import MoviePage from './components/movie-page'
-import MoviesPage from './components/movies-page'
-import Navbar from './components/navbar'
+import AddNewArrivals from './components/add-new-arriaval';
+import Favourites from './components/favourites';
+import FeedbackPage from './components/feedback';
+import HomePage from './components/home-page';
+import MoviePage from './components/movie-page';
+import MoviesPage from './components/movies-page';
+import Navbar from './components/navbar';
+import NewArrivals from './components/new-arrivals';
 import React from 'react';
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 
@@ -23,6 +25,8 @@ const App: React.FC = () => {
           <Route path="/movie-page/:imdbID" component={MoviePage} />
           <Route path="/feedback" component={FeedbackPage} />
           <Route path="/favourites" component={Favourites} />
+          <Route path="/add-new-arriaval" component={AddNewArrivals} />
+          <Route path="/new-arriavals" component={NewArrivals} /> 
           <Route path="**" component={HomePage} />
         </Switch>
 
