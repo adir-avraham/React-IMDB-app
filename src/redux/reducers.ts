@@ -32,6 +32,7 @@ export default function root(state = initialState, action: any) {
         case Actions.ADD_NEW_ARRIVAL: {
             const { newArrivals } = state;
             const { arrival } = action.payload
+            console.log(newArrivals)
             return {
                 ...state, newArrivals: [...newArrivals, arrival]
             }

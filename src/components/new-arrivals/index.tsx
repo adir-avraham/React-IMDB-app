@@ -12,6 +12,7 @@ export class NewArrivals extends React.Component<any, any> {
 
     render() {
     const { newArrivals } = this.props
+    console.log(newArrivals)
     
         return (
             <div>

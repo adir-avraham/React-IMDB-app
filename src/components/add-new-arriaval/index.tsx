@@ -14,7 +14,7 @@ import Typography from '@material-ui/core/Typography';
 
 export class AddNewArrivals extends React.Component<any, any> {
 
-  state = { Title: "", Year: "", Type: "" }
+  state = { Title: "", Year: "", Type: "", Poster: "" }
 
   render() {
 
@@ -56,6 +56,21 @@ export class AddNewArrivals extends React.Component<any, any> {
                     autoComplete="Title"
                     onChange={(e)=>{
                     this.setState({Title: e.target.value})
+                    }}
+                  />
+                </Grid>
+                
+                <Grid style={{ marginBottom: "8px" }} item xs={12}>
+                  <TextField
+                    variant="outlined"
+                    required
+                    fullWidth
+                    id="Image url"
+                    label="Image url"
+                    name="Image url"
+                    autoComplete="Image url"
+                    onChange={(e)=>{
+                    this.setState({Poster: e.target.value})
                     }}
                   />
                 </Grid>
