@@ -1,3 +1,5 @@
+import AddCommentIcon from '@material-ui/icons/AddComment';
+import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 import React from 'react';
 import { saveCommentAction } from '../../redux/actions'
 import axios from 'axios';
@@ -9,8 +11,13 @@ import Loader from '../loader'
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 import ButtonBase from '@material-ui/core/ButtonBase';
+import { Link } from "react-router-dom";
+import List from '@material-ui/core/List';
+import ListItem from '@material-ui/core/ListItem';
+import Divider from '@material-ui/core/Divider';
+import ListItemText from '@material-ui/core/ListItemText';
 
-
+import MoviesPage from '../movies-page'
 
 export class MoviePage extends React.Component<any, any> {
   constructor(props: any) {
@@ -97,6 +104,16 @@ export class MoviePage extends React.Component<any, any> {
                     {/* <Typography variant="body2" color="textSecondary">
                         ID: 1030114
                     </Typography> */}
+                     <Grid item>
+                <Typography variant="body2" style={{ cursor: 'pointer' }}>
+                <Link to="/movies-page" color="textPrimary" style={{ margin: 2 }}>
+                  <Button>
+
+                <ArrowBackIcon/>
+                  </Button>
+                  </Link>
+                </Typography>
+              </Grid>
                   </Grid>
                 </Grid>
               </Grid>
@@ -123,8 +140,21 @@ export class MoviePage extends React.Component<any, any> {
                 />
                 <Button style={{ margin: "35px" }} size="small" color="primary" onClick={() => {
                   onSaveComment(comment)
-                }} >Add</Button>
-              {currentComments.map((comment: any, index: number)=><p key={`com${index}`}>{comment.comment}</p>)}
+                }} ><AddCommentIcon/></Button>
+
+            <List style={{ width: "100%", maxWidth: 360 }}>
+                    {currentComments.map((comment: any, index: number) => { 
+                        return (
+                        <ListItem key={`com${index}`} alignItems="flex-start">
+                        <ListItemText
+                        primary={comment.comment}
+                        />
+                        </ListItem>
+                    //<Divider variant="inset" component="li" />
+                    )  
+                }) }
+                    </List>
+              {/* {currentComments.map((comment: any, index: number)=><p key={`com${index}`}>{comment.comment}</p>)} */}
               </Grid>
             </Grid>
           </Paper>
