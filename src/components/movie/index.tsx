@@ -8,12 +8,12 @@ import CardMedia from '@material-ui/core/CardMedia';
 import { connect } from 'react-redux'
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import Grid from '@material-ui/core/Grid';
-import IconButton from '@material-ui/core/IconButton';
 import { Link } from 'react-router-dom'; 
-import YouTubeIcon from '@material-ui/icons/YouTube';
-import Typography from '@material-ui/core/Typography';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
+import IconButton from '@material-ui/core/IconButton';
 import React from 'react';
+import Typography from '@material-ui/core/Typography';
+import YouTubeIcon from '@material-ui/icons/YouTube';
 
 
 let colorFavBtn = "default"
@@ -59,8 +59,6 @@ export class Movie extends React.Component<any, any> {
                 console.log("exsit");
               }
             });
-            console.log("this.props=>", this.props)
-            console.log("fav", favourites)
             const { addToFavourites } = this.props.actions
             addToFavourites(this.props)
           }}>

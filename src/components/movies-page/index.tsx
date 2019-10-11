@@ -1,8 +1,8 @@
-import React from 'react'
 import axios from 'axios'
-import MovieSearch from '../search'
-import MoviesList from '../movies-list'
 import Loader from '../loader'
+import MoviesList from '../movies-list'
+import MovieSearch from '../search'
+import React from 'react'
 
 
 

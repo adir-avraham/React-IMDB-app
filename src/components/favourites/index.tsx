@@ -1,17 +1,16 @@
+import Avatar from '@material-ui/core/Avatar';
+import { Button } from '@material-ui/core';
 import { connect } from 'react-redux';
 import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
 import { deleteMovieFromFavouritesAction } from '../../redux/actions'
+import Divider from '@material-ui/core/Divider';
 import Header from '../header';
-import React from 'react';
-
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
-import Divider from '@material-ui/core/Divider';
 import ListItemText from '@material-ui/core/ListItemText';
 import ListItemAvatar from '@material-ui/core/ListItemAvatar';
-import Avatar from '@material-ui/core/Avatar';
+import React from 'react';
 import Typography from '@material-ui/core/Typography';
-import { Button } from '@material-ui/core';
 
 
 export class Favourites extends React.Component<any, any> {

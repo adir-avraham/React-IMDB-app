@@ -1,5 +1,5 @@
-import React from 'react'
 import Header from '../header'
+import React from 'react'
 
 
 export default class HomePage extends React.Component<any, any> {

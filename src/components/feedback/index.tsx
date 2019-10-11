@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
-import React from 'react';
 import Header from '../header';
+import React from 'react';
 
 export class FeedbackPage extends React.Component<any, any> {
 

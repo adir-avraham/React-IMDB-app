@@ -1,5 +1,5 @@
 import Actions from './actions.config'
-import movie from '../components/movie'
+//import movie from '../components/movie'ex
 
 export const saveCommentAction = (comment: any) => {
 
@@ -26,4 +26,13 @@ export const deleteMovieFromFavouritesAction = (movieID: any) => {
         payload: { movieID }
     }
 
+}
+
+export const addNewArrivalAction = (arrival: any) => {
+
+    return {
+        type: Actions.ADD_NEW_ARRIVAL,
+        payload: { arrival }
+    }
+    
 }

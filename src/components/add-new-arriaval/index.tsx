@@ -1,6 +1,8 @@
 import AddCircleIcon from '@material-ui/icons/AddCircle';
+import { addNewArrivalAction } from '../../redux/actions'
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
+import { connect } from 'react-redux'
 import Container from '@material-ui/core/Container';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Grid from '@material-ui/core/Grid';
@@ -10,88 +12,116 @@ import TextField from '@material-ui/core/TextField';
 import Typography from '@material-ui/core/Typography';
 
 
-export default class AddNewArrivals extends React.Component<any, any> {
+export class AddNewArrivals extends React.Component<any, any> {
 
-    render() {
+  state = { Title: "", Year: "", Type: "" }
 
-        return (
+  render() {
 
-            <div>
-                <Header title="ADD NEW ARRIVALS" style={{ margin: "50px" }} />
+    return (
 
-                <Container component="main" maxWidth="xs">
-      <CssBaseline />
-      <div style={{ marginTop: "16px",
-                    display: 'flex',
-                    flexDirection: 'column',
-                    alignItems: 'center',}}>
-        <Avatar style={{
-               margin: "2px",
-               backgroundColor: "#f50057",
-               
-        }}>
-          <AddCircleIcon />
-        </Avatar>
-        <Typography component="h1" variant="h5">
-          Add a new arrival
-        </Typography>
-        <form style={{
-             width: '100%',
-             marginTop: "14px",
-        }} noValidate>
-          <Grid container spacing={2}>
-          <Grid style={{marginBottom: "8px"}} item xs={12}>
-              <TextField
-                variant="outlined"
-                required
+      <div>
+        <Header title="ADD NEW ARRIVALS" style={{ margin: "50px" }} />
+
+        <Container component="main" maxWidth="xs">
+          <CssBaseline />
+          <div style={{
+            marginTop: "16px",
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center'
+          }}>
+            <Avatar style={{
+              margin: "2px",
+              backgroundColor: "#f50057"
+            }}>
+              <AddCircleIcon />
+            </Avatar>
+            <Typography component="h1" variant="h5">
+              Add a new arrival
+                </Typography>
+            <form style={{
+              width: '100%',
+              marginTop: "14px",
+            }} noValidate>
+              <Grid container spacing={2}>
+                <Grid style={{ marginBottom: "8px" }} item xs={12}>
+                  <TextField
+                    variant="outlined"
+                    required
+                    fullWidth
+                    id="title"
+                    label="Title"
+                    name="Title"
+                    autoComplete="Title"
+                    onChange={(e)=>{
+                    this.setState({Title: e.target.value})
+                    }}
+                  />
+                </Grid>
+                <Grid item xs={12} sm={6}>
+                  <TextField
+                    autoComplete="Year"
+                    name="Year"
+                    variant="outlined"
+                    required
+                    fullWidth
+                    id="Year"
+                    label="Year"
+                    autoFocus
+                    onChange={(e)=>{
+                    this.setState({Year: e.target.value})
+                    }}
+                  />
+                </Grid>
+                <Grid item xs={12} sm={6}>
+                  <TextField
+                    variant="outlined"
+                    required
+                    fullWidth
+                    id="Type"
+                    label="Type"
+                    name="Type"
+                    autoComplete="Type"
+                    onChange={(e)=>{
+                    this.setState({Type: e.target.value})
+                    }}
+                  />
+                </Grid>
+              </Grid>
+              <Button
                 fullWidth
-                id="title"
-                label="Title"
-                name="Title"
-                autoComplete="Title"
-              />
-            </Grid>
-           
-            <Grid item xs={12} sm={6}>
-              <TextField
-                autoComplete="Year"
-                name="Year"
-                variant="outlined"
-                required
-                fullWidth
-                id="Year"
-                label="Year"
-                autoFocus
-              />
-            </Grid>
-            <Grid item xs={12} sm={6}>
-              <TextField
-                variant="outlined"
-                required
-                fullWidth
-                id="Type"
-                label="Type"
-                name="Type"
-                autoComplete="Type"
-              />
-            </Grid>
-            
-           
-          </Grid>
-          <Button
-            type="submit"
-            fullWidth
-            variant="contained"
-            color="primary"
-            style={{  margin: "18px 0px 4px"}}
-          >
-            Add a new arrival 
+                variant="contained"
+                color="primary"
+                style={{ margin: "18px 0px 4px" }}
+                onClick={()=>{
+                  const { addNewArrival } = this.props
+                  addNewArrival(this.state)
+                }}
+              >
+                Add a new arrival
           </Button>
-         
-        </form>
+            </form>
+          </div>
+        </Container>
       </div>
-    </Container>
-            </div>
-        )
-    }
+    )
+  }
 } 
+
+
+const mapStateToProps = (state: any) => {
+  return state;
+}
+
+const mapDispatchToProps = (dispatch: any) => {
+
+  return {
+    addNewArrival: (arrival: any) => {
+      dispatch(addNewArrivalAction(arrival))
+    }
+  }
+
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(AddNewArrivals)

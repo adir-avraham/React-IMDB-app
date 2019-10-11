@@ -2,7 +2,8 @@ import Actions from './actions.config'
 
 const initialState = {
     comments: [],
-    favourites: []
+    favourites: [],
+    newArrivals: []
 }
 
 
@@ -27,6 +28,13 @@ export default function root(state = initialState, action: any) {
                 return movie.imdbID !== movieID
             })
             return {...state, favourites: newFavourites}
+        }
+        case Actions.ADD_NEW_ARRIVAL: {
+            const { newArrivals } = state;
+            const { arrival } = action.payload
+            return {
+                ...state, newArrivals: [...newArrivals, arrival]
+            }
         }
         default: {
             return state;

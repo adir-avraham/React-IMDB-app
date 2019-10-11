@@ -1,23 +1,22 @@
 import AddCommentIcon from '@material-ui/icons/AddComment';
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
-import React from 'react';
-import { saveCommentAction } from '../../redux/actions'
 import axios from 'axios';
 import Button from '@material-ui/core/Button';
-import { connect } from 'react-redux'
-import TextField from '@material-ui/core/TextField';
-import Typography from '@material-ui/core/Typography';
-import Loader from '../loader'
-import Grid from '@material-ui/core/Grid';
-import Paper from '@material-ui/core/Paper';
 import ButtonBase from '@material-ui/core/ButtonBase';
+import { connect } from 'react-redux'
+import Divider from '@material-ui/core/Divider';
+import Grid from '@material-ui/core/Grid';
+import Loader from '../loader'
 import { Link } from "react-router-dom";
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
-import Divider from '@material-ui/core/Divider';
 import ListItemText from '@material-ui/core/ListItemText';
+import Paper from '@material-ui/core/Paper';
+import React from 'react';
+import { saveCommentAction } from '../../redux/actions'
+import TextField from '@material-ui/core/TextField';
+import Typography from '@material-ui/core/Typography';
 
-import MoviesPage from '../movies-page'
 
 export class MoviePage extends React.Component<any, any> {
   constructor(props: any) {
