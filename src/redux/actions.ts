@@ -45,10 +45,16 @@ export const getSeriesesSuccessAction = (serieses: any) => {
     }
 }
 
-export const getSeriesesAction = () => {
-
+export const getSeriesesAction = (searchValue: any) => {
+ 
     return async (dispatch: any) => {
-        const result = await service.getSerieses();
+        const result = await service.getSerieses(searchValue);
+    
+            if (!result.data.Search) {
+
+                return alert("no results")
+            }         
+            
         dispatch(getSeriesesSuccessAction(result.data.Search))
 
         
