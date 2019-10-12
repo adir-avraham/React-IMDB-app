@@ -3,7 +3,8 @@ import Actions from './actions.config'
 const initialState = {
     comments: [],
     favourites: [],
-    newArrivals: []
+    newArrivals: [],
+    serieses: []
 }
 
 
@@ -32,9 +33,15 @@ export default function root(state = initialState, action: any) {
         case Actions.ADD_NEW_ARRIVAL: {
             const { newArrivals } = state;
             const { arrival } = action.payload
-            console.log(newArrivals)
             return {
                 ...state, newArrivals: [...newArrivals, arrival]
+            }
+        }
+        case Actions.GET_SERIESES_SUCCESS: {
+            const { serieses } = action.payload
+            console.log("cons recucer" ,state)
+            return {
+                ...state, serieses
             }
         }
         default: {

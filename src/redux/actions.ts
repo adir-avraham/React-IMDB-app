@@ -1,5 +1,5 @@
 import Actions from './actions.config'
-//import movie from '../components/movie'ex
+import service from './service'
 
 export const saveCommentAction = (comment: any) => {
 
@@ -35,4 +35,22 @@ export const addNewArrivalAction = (arrival: any) => {
         payload: { arrival }
     }
     
+}
+
+export const getSeriesesSuccessAction = (serieses: any) => {
+
+    return {
+        type: Actions.GET_SERIESES_SUCCESS,
+        payload: { serieses }
+    }
+}
+
+export const getSeriesesAction = () => {
+
+    return async (dispatch: any) => {
+        const result = await service.getSerieses();
+        dispatch(getSeriesesSuccessAction(result.data.Search))
+
+        
+    }
 }

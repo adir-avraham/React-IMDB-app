@@ -2,7 +2,7 @@ import AppBar from '@material-ui/core/AppBar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import { Link } from "react-router-dom";
-import React from 'react'
+import React from 'react';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 
@@ -40,7 +40,10 @@ export default class Navbar extends React.Component<any, any> {
               </Link>
               <Link to='/new-arriavals/' color="textPrimary" style={{ margin: 2 }}>
                 <Button>New arrivals </Button>
-              </Link>                   
+              </Link>      
+              <Link to='/serieses-page/' color="textPrimary" style={{ margin: 2 }}>
+                <Button> Serieses </Button>
+              </Link>               
             </nav>
             <Button href="https://www.imdb.com/" target="_blanck" color="primary" variant="outlined" style={{ margin: 2 }}>
               IMDB

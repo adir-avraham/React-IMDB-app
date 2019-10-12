@@ -8,6 +8,7 @@ import MoviesPage from './components/movies-page';
 import Navbar from './components/navbar';
 import NewArrivals from './components/new-arrivals';
 import React from 'react';
+import SeriesesPage from './components/serieses-page';
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 
 
@@ -27,6 +28,7 @@ const App: React.FC = () => {
           <Route path="/favourites" component={Favourites} />
           <Route path="/add-new-arriaval" component={AddNewArrivals} />
           <Route path="/new-arriavals" component={NewArrivals} /> 
+          <Route path="/serieses-page" component={SeriesesPage} />           
           <Route path="**" component={HomePage} />
         </Switch>
 

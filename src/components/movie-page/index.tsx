@@ -13,7 +13,7 @@ import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import Paper from '@material-ui/core/Paper';
 import React from 'react';
-import { saveCommentAction } from '../../redux/actions'
+import { saveCommentAction } from '../../redux/actions';
 import TextField from '@material-ui/core/TextField';
 import Typography from '@material-ui/core/Typography';
 
