@@ -4,7 +4,8 @@ const initialState = {
     comments: [],
     favourites: [],
     newArrivals: [],
-    serieses: []
+    serieses: [],
+    loading: false
 }
 
 
@@ -37,11 +38,18 @@ export default function root(state = initialState, action: any) {
                 ...state, newArrivals: [...newArrivals, arrival]
             }
         }
+        case Actions.GET_SERIESES_PENDING: {
+            return {
+                ...state,
+                loading: true
+            }
+        }
         case Actions.GET_SERIESES_SUCCESS: {
             const { serieses } = action.payload
-            console.log("cons recucer" ,state)
             return {
-                ...state, serieses
+                ...state,
+                loading: false,
+                serieses
             }
         }
         default: {

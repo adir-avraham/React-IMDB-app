@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import Container from '@material-ui/core/Container';
-import { getSeriesesAction } from '../../redux/actions'
+import { getSeriesesAction, getSeriesesPendinngAction } from '../../redux/actions'
 import Grid from '@material-ui/core/Grid';
 import Header from '../header';
 import Movie from '../movie';
@@ -16,15 +16,14 @@ export class SeriesesPage extends React.Component<any, any> {
 
     state = {
         searchValue: "",
-        loading: false
     }
 
 
 
     render() {
-        if (this.state.loading) return <Loader />
-        const { serieses } = this.props
-        const { searchValue, getSerieses } = this.props
+        const { searchValue, getSerieses, serieses, loading, getSeriesesPendinng } = this.props
+        
+        if (loading) return <Loader />
         return (
 
             <div>
@@ -45,6 +44,7 @@ export class SeriesesPage extends React.Component<any, any> {
                 <Button variant="contained" color="primary" style={{ margin: "5.5px" }} onClick={() => {
                     //this.setState({loading: true})
                     if (!this.state.searchValue) return;
+                    getSeriesesPendinng()
                     getSerieses(this.state.searchValue)
                 }}> <SearchIcon />
                     SEARCH </Button>
@@ -59,9 +59,9 @@ export class SeriesesPage extends React.Component<any, any> {
 }
 
 const mapStateToProps = (state: any) => {
-    const { serieses } = state
+    const { serieses, loading } = state
     
-    return { serieses }
+    return { serieses, loading }
 }
 
 const mapDispatchToProps = (dispatch: any) => {
@@ -69,8 +69,12 @@ const mapDispatchToProps = (dispatch: any) => {
     return {
         getSerieses: (searchValue: any) => {
             dispatch(getSeriesesAction(searchValue))
+        },
+        getSeriesesPendinng: () => {
+            dispatch(getSeriesesPendinngAction())
 
         }
+
     }
 }
 

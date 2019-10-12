@@ -37,6 +37,15 @@ export const addNewArrivalAction = (arrival: any) => {
     
 }
 
+export const getSeriesesPendinngAction = () => {
+    
+    return {
+        type: Actions.GET_SERIESES_PENDING,
+        
+    }
+     
+}
+
 export const getSeriesesSuccessAction = (serieses: any) => {
 
     return {
