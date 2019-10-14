@@ -1,6 +1,7 @@
 import Actions from './actions.config'
 import service from './service'
 
+
 export const saveCommentAction = (comment: any) => {
 
     return {
@@ -56,16 +57,26 @@ export const getSeriesesSuccessAction = (serieses: any) => {
 
 export const getSeriesesAction = (searchValue: any) => {
  
-    return async (dispatch: any) => {
-        const result = await service.getSerieses(searchValue);
-    
-            if (!result.data.Search) {
-
-                return alert("no results")
-            }         
-            
-        dispatch(getSeriesesSuccessAction(result.data.Search))
-
-        
+    return async (dispatch: any) => {       
+        try {
+            const result = await service.getSerieses(searchValue);
+            // if (!result.data.Search) {
+                //     dispatch(getSeriesesFailureAction())       
+                //     }         
+                dispatch(getSeriesesSuccessAction(result.data.Search))
+        }
+        catch(err) {
+            dispatch(getSeriesesFailureAction(err.message))
+            //console.log('myError: ', err.message);   
+        }
     }
 }
+
+export const getSeriesesFailureAction = (error: any) => {
+
+    return {
+        type: Actions.GET_SERIESES_FAILEURE,
+        payload: { error }
+    }
+}
+

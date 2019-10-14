@@ -5,7 +5,8 @@ const initialState = {
     favourites: [],
     newArrivals: [],
     serieses: [],
-    loading: false
+    loading: false,
+    error: null,    
 }
 
 
@@ -49,7 +50,15 @@ export default function root(state = initialState, action: any) {
             return {
                 ...state,
                 loading: false,
+                error: null,
                 serieses
+            }
+        }
+        case Actions.GET_SERIESES_FAILEURE: {
+            return {
+                ...state,
+                loading: false,
+                error: action.payload.error
             }
         }
         default: {

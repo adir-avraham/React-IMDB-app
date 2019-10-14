@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import Container from '@material-ui/core/Container';
-import { getSeriesesAction, getSeriesesPendinngAction } from '../../redux/actions'
+import { getSeriesesAction, getSeriesesPendinngAction, getSeriesesFailureAction } from '../../redux/actions'
 import Grid from '@material-ui/core/Grid';
 import Header from '../header';
 import Movie from '../movie';
@@ -21,7 +21,7 @@ export class SeriesesPage extends React.Component<any, any> {
 
 
     render() {
-        const { searchValue, getSerieses, serieses, loading, getSeriesesPendinng } = this.props
+        const { searchValue, getSerieses, serieses, loading, getSeriesesPendinng, getSeriesesFailure } = this.props
         
         if (loading) return <Loader />
         return (
@@ -59,9 +59,14 @@ export class SeriesesPage extends React.Component<any, any> {
 }
 
 const mapStateToProps = (state: any) => {
-    const { serieses, loading } = state
-    
-    return { serieses, loading }
+    let { serieses, loading } = state
+    if (!serieses) {
+        serieses = []
+        return { loading, serieses }  
+    } else {       
+        return { serieses, loading }
+    }
+        
 }
 
 const mapDispatchToProps = (dispatch: any) => {
@@ -72,8 +77,11 @@ const mapDispatchToProps = (dispatch: any) => {
         },
         getSeriesesPendinng: () => {
             dispatch(getSeriesesPendinngAction())
-
-        }
+        },
+        // getSeriesesFailure: () => {
+        //     dispatch(getSeriesesFailureAction())
+        // }
+        
 
     }
 }
