@@ -38,17 +38,13 @@ export const addNewArrivalAction = (arrival: any) => {
     
 }
 
-export const getSeriesesPendinngAction = () => {
-    
+export const getSeriesesPendinngAction = () => {  
     return {
         type: Actions.GET_SERIESES_PENDING,
-        
     }
-     
 }
 
 export const getSeriesesSuccessAction = (serieses: any) => {
-
     return {
         type: Actions.GET_SERIESES_SUCCESS,
         payload: { serieses }
@@ -73,10 +69,41 @@ export const getSeriesesAction = (searchValue: any) => {
 }
 
 export const getSeriesesFailureAction = (error: any) => {
-
     return {
         type: Actions.GET_SERIESES_FAILEURE,
         payload: { error }
     }
 }
 
+
+export const getGamesPendingAction = () => {
+    return {
+        type: Actions.GET_GAMES_PENDING,
+    }
+}
+
+export const getGamesSuccessAction = (games: any) => {
+    return {
+        type: Actions.GET_GAMES_SUCCESS,
+        payload: { games }
+    }
+}
+
+export const getGamesFailureAction = (error: any) => {
+    return {
+        type: Actions.GET_GAMES_FAILEURE,
+        payload: { error }
+    }
+}
+
+export const getGamesAction = (searchValue: any) => {
+    return async (dispatch: any) => {
+        try {
+            const result = await service.getGames(searchValue)
+            dispatch(getGamesSuccessAction(result.data.Search))
+        }
+        catch(err) {
+            dispatch(getGamesFailureAction(err.message))
+        }
+    }
+}

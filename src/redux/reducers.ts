@@ -5,6 +5,7 @@ const initialState = {
     favourites: [],
     newArrivals: [],
     serieses: [],
+    games: [],
     loading: false,
     error: null,    
 }
@@ -55,6 +56,28 @@ export default function root(state = initialState, action: any) {
             }
         }
         case Actions.GET_SERIESES_FAILEURE: {
+            return {
+                ...state,
+                loading: false,
+                error: action.payload.error
+            }
+        }
+        case Actions.GET_GAMES_PENDING: {
+            return {
+                ...state,
+                loading: true
+            }
+        }
+        case Actions.GET_GAMES_SUCCESS: {
+            const { games } = action.payload
+            return {
+                ...state,
+                loading: false,
+                error: null,
+                games
+            }
+        }
+        case Actions.GET_GAMES_FAILEURE: {
             return {
                 ...state,
                 loading: false,

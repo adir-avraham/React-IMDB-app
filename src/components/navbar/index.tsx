@@ -43,6 +43,9 @@ export default class Navbar extends React.Component<any, any> {
               </Link>      
               <Link to='/serieses-page/' color="textPrimary" style={{ margin: 2 }}>
                 <Button> Serieses </Button>
+              </Link>
+              <Link to='/games-page' color="textPrimary" style={{margin: 2}}>
+                <Button> Video games </Button>  
               </Link>               
             </nav>
             <Button href="https://www.imdb.com/" target="_blanck" color="primary" variant="outlined" style={{ margin: 2 }}>
