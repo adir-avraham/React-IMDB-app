@@ -14,7 +14,7 @@ import Typography from '@material-ui/core/Typography';
 
 export class AddNewArrivals extends React.Component<any, any> {
 
-  state = { Title: "", Year: "", Type: "", Poster: "" }
+  state = { Title: "", Year: "", Type: "", Poster: "", imdbID: "" }
 
   render() {
 
@@ -111,6 +111,7 @@ export class AddNewArrivals extends React.Component<any, any> {
                 style={{ margin: "18px 0px 4px" }}
                 onClick={()=>{
                   const { addNewArrival } = this.props
+                  this.setState({imdbID: Math.random()*9999})
                   addNewArrival(this.state)
                 }}
               >
