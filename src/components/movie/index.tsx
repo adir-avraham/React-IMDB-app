@@ -19,7 +19,9 @@ import YouTubeIcon from '@material-ui/icons/YouTube';
 let colorFavBtn = "default"
 
 export class Movie extends React.Component<any, any> {
-
+  state = {
+    likeBtn: false
+  }
   
   render() {
     const { Title, Year, imdbID, Type, Poster, favourites } = this.props
@@ -53,7 +55,9 @@ export class Movie extends React.Component<any, any> {
             <Typography>Type: {Type}</Typography>
           </CardContent>
           <CardActions>
+          {!this.state.likeBtn? null: 
           <IconButton aria-label="add to favorites" onClick={()=>{
+            this.state.likeBtn = !this.state.likeBtn;
             favourites.forEach((movie: any) => {
               if (movie.imdbID === this.props.imdbID) {
                 console.log("exsit");
@@ -62,8 +66,24 @@ export class Movie extends React.Component<any, any> {
             const { addToFavourites } = this.props.actions
             addToFavourites(this.props)
           }}>
-          <FavoriteIcon color="inherit"/>
+          <FavoriteIcon color="secondary"/>
         </IconButton>
+          }
+        {this.state.likeBtn? null: 
+        <IconButton aria-label="add to favorites" onClick={()=>{
+          this.state.likeBtn = !this.state.likeBtn;
+          favourites.forEach((movie: any) => {
+            if (movie.imdbID === this.props.imdbID) {
+              console.log("exsit");
+            }
+          });
+          const { addToFavourites } = this.props.actions
+          addToFavourites(this.props)
+        }}>
+        <FavoriteIcon color="inherit"/>
+      </IconButton>
+        }
+        
             {/* <a href={`https://www.imdb.com/title/${imdbID}/`} target="_blanck">
               <Button size="small" color="primary">IMDB</Button>
             </a> */}
