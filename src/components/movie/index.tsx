@@ -57,7 +57,7 @@ export class Movie extends React.Component<any, any> {
           <CardActions>
           {!this.state.likeBtn? null: 
           <IconButton aria-label="add to favorites" onClick={()=>{
-            this.state.likeBtn = !this.state.likeBtn;
+            this.setState({likeBtn: false });
             favourites.forEach((movie: any) => {
               if (movie.imdbID === this.props.imdbID) {
                 console.log("exsit");
@@ -72,7 +72,7 @@ export class Movie extends React.Component<any, any> {
           }
         {this.state.likeBtn? null: 
         <IconButton aria-label="add to favorites" onClick={()=>{
-          this.state.likeBtn = !this.state.likeBtn;
+          this.setState({likeBtn: true });
           favourites.forEach((movie: any) => {
             if (movie.imdbID === this.props.imdbID) {
               console.log("exsit");

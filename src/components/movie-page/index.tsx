@@ -4,7 +4,6 @@ import axios from 'axios';
 import Button from '@material-ui/core/Button';
 import ButtonBase from '@material-ui/core/ButtonBase';
 import { connect } from 'react-redux'
-import Divider from '@material-ui/core/Divider';
 import Grid from '@material-ui/core/Grid';
 import Loader from '../loader'
 import { Link } from "react-router-dom";
@@ -149,7 +148,6 @@ export class MoviePage extends React.Component<any, any> {
                         primary={comment.comment}
                         />
                         </ListItem>
-                    //<Divider variant="inset" component="li" />
                     )  
                 }) }
                     </List>

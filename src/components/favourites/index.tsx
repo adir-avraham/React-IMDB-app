@@ -3,7 +3,6 @@ import { Button } from '@material-ui/core';
 import { connect } from 'react-redux';
 import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
 import { deleteMovieFromFavouritesAction } from '../../redux/actions'
-import Divider from '@material-ui/core/Divider';
 import Header from '../header';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
@@ -50,7 +49,6 @@ export class Favourites extends React.Component<any, any> {
                             deleteFromFavourites(imdbID)
                         }} ><DeleteForeverIcon color="error"/></Button>
                         </ListItem>
-                    //<Divider variant="inset" component="li" />
                     )  
                 }) }
                     </List>
