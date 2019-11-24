@@ -1,4 +1,4 @@
-import { addMovieToFavouritesAction } from '../../redux/actions'
+import { addMovieToFavouritesAction, deleteMovieFromFavouritesAction } from '../../redux/actions'
 import Button from '@material-ui/core/Button';
 import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
@@ -16,7 +16,7 @@ import Typography from '@material-ui/core/Typography';
 import YouTubeIcon from '@material-ui/icons/YouTube';
 
 
-let colorFavBtn = "default"
+
 
 export class Movie extends React.Component<any, any> {
   state = {
@@ -32,7 +32,7 @@ export class Movie extends React.Component<any, any> {
     } else {
       src = Poster
     }
-    let colorFavBtn = "error"
+
     return (
       <Grid item xs={12} sm={6} md={4}>
         <Card style={{ height: '100%', display: 'flex', flexDirection: 'column'}}>
@@ -63,10 +63,11 @@ export class Movie extends React.Component<any, any> {
                 console.log("exsit");
               }
             });
-            const { addToFavourites } = this.props.actions
-            addToFavourites(this.props)
+            const { deleteFromFavourites } = this.props
+            deleteFromFavourites(imdbID)
+
           }}>
-          <FavoriteIcon color="secondary"/>
+          <FavoriteIcon color="error"/>
         </IconButton>
           }
         {this.state.likeBtn? null: 
@@ -77,7 +78,7 @@ export class Movie extends React.Component<any, any> {
               console.log("exsit");
             }
           });
-          const { addToFavourites } = this.props.actions
+          const { addToFavourites } = this.props
           addToFavourites(this.props)
         }}>
         <FavoriteIcon color="inherit"/>
@@ -105,14 +106,18 @@ const mapStateToProps = (state: any) => {
 
 const mapDispatchToProps = (dispatch: any) => {
   return {
-    actions:{
       addToFavourites: (movie: any)=>{
-
         dispatch(addMovieToFavouritesAction(movie))
-      } 
-    }
+      },
+      
+        deleteFromFavourites: (movieID: any) => {
+            dispatch(deleteMovieFromFavouritesAction(movieID))
+    
+      }
   } 
 }
+
+
 
 
 export default connect(mapStateToProps, mapDispatchToProps)(Movie) 
