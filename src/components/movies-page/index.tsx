@@ -21,7 +21,7 @@ export default class MoviesPage extends React.Component<any, any> {
     getMoviesByName: any = (searchValue: any) => {
         if (!searchValue) return;
         this.setState({ loading: true })
-        axios.get(`http://www.omdbapi.com/?apikey=8036fcb6&s=${searchValue}&type=movie`).then((response: any) => {
+        axios.get(`https://www.omdbapi.com/?apikey=8036fcb6&s=${searchValue}&type=movie`).then((response: any) => {
             if (!response.data.Search) {
                 this.setState({ movies: [], loading: false })
                 return
