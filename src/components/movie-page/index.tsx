@@ -31,7 +31,7 @@ export class MoviePage extends React.Component<any, any> {
   componentDidMount() {
     const { imdbID } = this.props.match.params;
     this.setState({ loading: true })
-    axios.get(`http://www.omdbapi.com/?apikey=8036fcb6&i=${imdbID}`).then((res: any) => {
+    axios.get(`https://www.omdbapi.com/?apikey=8036fcb6&i=${imdbID}`).then((res: any) => {
       this.setState({ currentMovie: res.data, loading: false })
     })
   }
