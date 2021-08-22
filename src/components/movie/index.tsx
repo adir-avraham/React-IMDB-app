@@ -14,8 +14,8 @@ import IconButton from '@material-ui/core/IconButton';
 import React from 'react';
 import Typography from '@material-ui/core/Typography';
 import YouTubeIcon from '@material-ui/icons/YouTube';
-
-
+import InfoOutlinedIcon from '@material-ui/icons/InfoOutlined';
+import Divider from '@material-ui/core/Divider';
 
 
 export class Movie extends React.Component<any, any> {
@@ -36,15 +36,6 @@ export class Movie extends React.Component<any, any> {
     return (
       <Grid item xs={12} sm={6} md={4}>
         <Card style={{ height: '100%', display: 'flex', flexDirection: 'column'}}>
-          <CardHeader action={
-            <Link to={`/movie-page/${imdbID}`}>
-           <IconButton aria-label="settings">
-           <MoreVertIcon />
-         </IconButton>
-            </Link>
-          }
-          title=""
-          />
           <CardMedia
             style={{ paddingTop: '56.25%' }}
             image={src}
@@ -54,6 +45,7 @@ export class Movie extends React.Component<any, any> {
             <Typography>Year: {Year}</Typography>
             <Typography>Type: {Type}</Typography>
           </CardContent>
+          <Divider/>
           <CardActions>
           {!this.state.likeBtn? null: 
           <IconButton aria-label="add to favorites" onClick={()=>{
@@ -91,6 +83,12 @@ export class Movie extends React.Component<any, any> {
             <a href={`https://www.youtube.com/results?search_query=${Title}`} target="_blanck">
               <Button size="small" color="primary"><YouTubeIcon color="error"/></Button>
             </a>
+
+            <Link to={`/movie-page/${imdbID}`}>
+              <IconButton aria-label="settings">
+           <InfoOutlinedIcon />
+         </IconButton>
+            </Link>
           </CardActions>
         </Card>
       </Grid>

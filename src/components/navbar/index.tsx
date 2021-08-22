@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import React from 'react';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
-
+import AppsOutlinedIcon from '@material-ui/icons/AppsOutlined';
 
 
 
@@ -18,15 +18,15 @@ export default class Navbar extends React.Component<any, any> {
 
       <div>
         <CssBaseline />
-        <AppBar position="static" color="default" elevation={0} style={{ borderBottom: '1px solid rgba(0, 0, 0, 0.12)' }}>
+        <AppBar position="static" color="primary" elevation={0} style={{ borderBottom: '1px solid rgba(0, 0, 0, 0.12)' }}>
           <Toolbar style={{ flexWrap: 'wrap' }}>
             <Typography align="left" variant="h6" color="inherit" noWrap style={{ flexGrow: 1 }}>
-              IMDB APP</Typography>
+              OMDB APP</Typography>
             <nav>
-              <Link to="/home-page" color="textPrimary" style={{ margin: 2 }}>
-                <Button> HOME </Button>
+              <Link to="/home-page" style={{ margin: 2, textDecoration: "none" }}>
+                <Button variant="contained"> <AppsOutlinedIcon/> </Button>
               </Link>
-              <Link to="/movies-page" color="textPrimary" style={{ margin: 2 }}>
+              {/* <Link to="/movies-page" color="textPrimary" style={{ margin: 2 }}>
                 <Button> MOVIES </Button>
               </Link>
               <Link to='/feedback/' color="textPrimary" style={{ margin: 2 }}>
@@ -46,11 +46,8 @@ export default class Navbar extends React.Component<any, any> {
               </Link>
               <Link to='/games-page' color="textPrimary" style={{margin: 2}}>
                 <Button> Video games </Button>  
-              </Link>               
+              </Link>                */}
             </nav>
-            <Button href="https://www.imdb.com/" target="_blanck" color="primary" variant="outlined" style={{ margin: 2 }}>
-              IMDB
-            </Button>
           </Toolbar>
         </AppBar>
       </div>
