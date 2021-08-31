@@ -3,20 +3,19 @@ import Button from '@material-ui/core/Button';
 import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
-import { CardHeader } from '@material-ui/core';
+import { Fade } from '@material-ui/core';
 import CardMedia from '@material-ui/core/CardMedia';
 import { connect } from 'react-redux'
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import Grid from '@material-ui/core/Grid';
 import { Link } from 'react-router-dom'; 
-import MoreVertIcon from '@material-ui/icons/MoreVert';
 import IconButton from '@material-ui/core/IconButton';
 import React from 'react';
 import Typography from '@material-ui/core/Typography';
 import YouTubeIcon from '@material-ui/icons/YouTube';
 import InfoOutlinedIcon from '@material-ui/icons/InfoOutlined';
 import Divider from '@material-ui/core/Divider';
-
+import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
 
 export class Movie extends React.Component<any, any> {
   state = {
@@ -35,6 +34,12 @@ export class Movie extends React.Component<any, any> {
 
     return (
       <Grid item xs={12} sm={6} md={4}>
+                <Fade 
+          in={true}
+     
+          {...(true ? { timeout: 1500 } : {})}
+        >
+
         <Card style={{ height: '100%', display: 'flex', flexDirection: 'column'}}>
           <CardMedia
             style={{ paddingTop: '56.25%' }}
@@ -46,7 +51,7 @@ export class Movie extends React.Component<any, any> {
             <Typography>Type: {Type}</Typography>
           </CardContent>
           <Divider/>
-          <CardActions>
+          <CardActions style={{display: "flex", justifyContent: "space-evenly"}}>
           {!this.state.likeBtn? null: 
           <IconButton aria-label="add to favorites" onClick={()=>{
             this.setState({likeBtn: false });
@@ -57,7 +62,7 @@ export class Movie extends React.Component<any, any> {
             });
             const { deleteFromFavourites } = this.props
             deleteFromFavourites(imdbID)
-
+            
           }}>
           <FavoriteIcon color="error"/>
         </IconButton>
@@ -73,7 +78,8 @@ export class Movie extends React.Component<any, any> {
           const { addToFavourites } = this.props
           addToFavourites(this.props)
         }}>
-        <FavoriteIcon color="inherit"/>
+        <FavoriteBorderIcon color="inherit"/>
+        
       </IconButton>
         }
         
@@ -81,7 +87,7 @@ export class Movie extends React.Component<any, any> {
               <Button size="small" color="primary">IMDB</Button>
             </a> */}
             <a href={`https://www.youtube.com/results?search_query=${Title}`} target="_blanck">
-              <Button size="small" color="primary"><YouTubeIcon color="error"/></Button>
+              <Button size="small" ><YouTubeIcon color="error"/></Button>
             </a>
 
             <Link to={`/movie-page/${imdbID}`}>
@@ -91,6 +97,7 @@ export class Movie extends React.Component<any, any> {
             </Link>
           </CardActions>
         </Card>
+            </Fade >
       </Grid>
     )
   }

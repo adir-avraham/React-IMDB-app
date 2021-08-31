@@ -2,7 +2,6 @@ import AddCommentIcon from '@material-ui/icons/AddComment';
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 import axios from 'axios';
 import Button from '@material-ui/core/Button';
-import ButtonBase from '@material-ui/core/ButtonBase';
 import { connect } from 'react-redux'
 import Grid from '@material-ui/core/Grid';
 import Loader from '../loader'
@@ -15,6 +14,9 @@ import React from 'react';
 import { saveCommentAction } from '../../redux/actions';
 import TextField from '@material-ui/core/TextField';
 import Typography from '@material-ui/core/Typography';
+import { Card, CardContent, CardMedia } from '@material-ui/core';
+import Container from '@material-ui/core/Container';
+
 
 
 export class MoviePage extends React.Component<any, any> {
@@ -25,9 +27,9 @@ export class MoviePage extends React.Component<any, any> {
       loading: false,
       comments: [],
     }
-
+    
   }
-
+  
   componentDidMount() {
     const { imdbID } = this.props.match.params;
     this.setState({ loading: true })
@@ -37,6 +39,7 @@ export class MoviePage extends React.Component<any, any> {
   }
   
   render() {
+
     const { onSaveComment, comments } = this.props
     const { comment } = this.state
     if (this.state.loading) return <Loader />
@@ -54,73 +57,60 @@ export class MoviePage extends React.Component<any, any> {
     
     return (
       <div>
+      <Container maxWidth="md">
 
-        <div style={{ flexGrow: 1 }}>
-          <Paper style={{ padding: "4px", margin: "auto", maxWidth: 700, height: 350 }}>
-            <Grid container spacing={2}>
-              <Grid item key={imdbID}>
-                <ButtonBase style={{ width: 228, height: 328 }}>
-                  <img style={{
-                    margin: 'auto',
-                    display: 'block',
-                    maxWidth: '100%',
-                    maxHeight: '100%',
-                  }}
-                    alt="complex" src={src} />
-                </ButtonBase>
-              </Grid>
-              <Grid item xs={12} sm container>
-                <Grid item xs container direction="column" spacing={2}>
-                  <Grid item xs>
-                    <Typography style={{textAlign:"left"}} gutterBottom variant="subtitle1">
-                      {Title}
-                    </Typography>
-                    <Typography style={{textAlign:"left"}} variant="body2" gutterBottom>
-                     Year: {Year}
-                    </Typography>
-                    <Typography style={{textAlign:"left"}} variant="body2" gutterBottom>
-                     Actors: {Actors}
-                    </Typography>
-                    <Typography style={{textAlign:"left"}} variant="body2" gutterBottom>
-                     Genre: {Genre}
-                    </Typography>
-                    <Typography style={{textAlign:"left"}} variant="body2" gutterBottom>
-                     Language: {Language}
-                    </Typography>
-                    <Typography style={{textAlign:"left"}} variant="body2" gutterBottom>
-                     Country: {Country}
-                    </Typography>
-                    <Typography style={{textAlign:"left"}} variant="body2" gutterBottom>
-                     Runtime: {Runtime}
-                    </Typography>
-                    <Typography style={{textAlign:"left"}} variant="body2" gutterBottom>
-                     imdbRating: {imdbRating}
-                    </Typography>
-                    <Typography style={{textAlign:"left"}} variant="body2" gutterBottom>
-                     Plot: {Plot}
-                    </Typography>
-                    {/* <Typography variant="body2" color="textSecondary">
-                        ID: 1030114
-                    </Typography> */}
-                     <Grid item>
-                <Typography variant="body2" style={{ cursor: 'pointer' }}>
-                <Link to="/movies-page" color="textPrimary" style={{ margin: 2 }}>
-                  <Button>
-
+        <Card style={{display: "flex", marginTop: 10}}>
+          <CardMedia
+            style={{width: 220}}
+            image={src}
+            component="img"
+            alt={Title}
+            title={Title}
+          />
+          <CardContent>
+            <Typography style={{textAlign:"left"}} gutterBottom variant="subtitle1">
+              {Title}
+            </Typography>
+            <Typography style={{textAlign:"left"}} variant="body2" gutterBottom>
+              Type: {Type}
+            </Typography>
+            <Typography style={{textAlign:"left"}} variant="body2" gutterBottom>
+              Year: {Year}
+            </Typography>
+            <Typography style={{textAlign:"left"}} variant="body2" gutterBottom>
+              Actors: {Actors}
+            </Typography>
+            <Typography style={{textAlign:"left"}} variant="body2" gutterBottom>
+              Genre: {Genre}
+            </Typography>
+            <Typography style={{textAlign:"left"}} variant="body2" gutterBottom>
+              Language: {Language}
+            </Typography>
+            <Typography style={{textAlign:"left"}} variant="body2" gutterBottom>
+              Country: {Country}
+            </Typography>
+            <Typography style={{textAlign:"left"}} variant="body2" gutterBottom>
+              Runtime: {Runtime}
+            </Typography>
+            <Typography style={{textAlign:"left"}} variant="body2" gutterBottom>
+              imdbRating: {imdbRating}
+            </Typography>
+            <Typography style={{textAlign:"left"}} variant="body2" gutterBottom>
+              Plot: {Plot}
+            </Typography>
+          </CardContent>
+        </Card>
+        
+        <Typography variant="body2" style={{ cursor: 'pointer' }}>
+          <Link to={`/${Type}s-page`} color="textPrimary" style={{ margin: 4 }}>
+             <Button>
                 <ArrowBackIcon/>
-                  </Button>
-                  </Link>
-                </Typography>
-              </Grid>
-                  </Grid>
-                </Grid>
-              </Grid>
-            </Grid>
-          </Paper>
-        </div>
+              </Button>
+          </Link>
+        </Typography>
 
         <div style={{ flexGrow: 1 }}>
-          <Paper style={{ padding: "4px", textAlign: "center", maxWidth: 700, margin: "auto" }}>
+          <Paper style={{ padding: "4px", textAlign: "center", margin: "auto" }}>
             <Grid container spacing={2}>
               <Grid item xs={12} sm={6}>
                 <TextField
@@ -135,27 +125,28 @@ export class MoviePage extends React.Component<any, any> {
                     this.setState({ comment: {imdbID: imdbID, comment: e.target.value} })
                   }}
                   //value={this.state.comment}
-                />
+                  />
                 <Button style={{ margin: "35px" }} size="small" color="primary" onClick={() => {
                   onSaveComment(comment)
                 }} ><AddCommentIcon/></Button>
 
             <List style={{ width: "100%", maxWidth: 360 }}>
                     {currentComments.map((comment: any, index: number) => { 
-                        return (
+                      return (
                         <ListItem key={`com${index}`} alignItems="flex-start">
                         <ListItemText
                         primary={comment.comment}
                         />
                         </ListItem>
                     )  
-                }) }
+                  }) }
                     </List>
               {/* {currentComments.map((comment: any, index: number)=><p key={`com${index}`}>{comment.comment}</p>)} */}
               </Grid>
             </Grid>
           </Paper>
         </div>
+      </Container>     
       </div>
     )
   }

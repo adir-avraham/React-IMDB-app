@@ -41,8 +41,8 @@ export default class Navbar extends React.Component<any, any> {
               <Link to='/new-arriavals/' color="textPrimary" style={{ margin: 2 }}>
                 <Button>New arrivals </Button>
               </Link>      
-              <Link to='/serieses-page/' color="textPrimary" style={{ margin: 2 }}>
-                <Button> Serieses </Button>
+              <Link to='/series-page/' color="textPrimary" style={{ margin: 2 }}>
+                <Button> Series </Button>
               </Link>
               <Link to='/games-page' color="textPrimary" style={{margin: 2}}>
                 <Button> Video games </Button>  

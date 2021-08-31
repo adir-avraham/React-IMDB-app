@@ -10,8 +10,9 @@ import Loader from '../loader';
 import SearchIcon from '@material-ui/icons/Search';
 import TextField from '@material-ui/core/TextField';
 import Typography from '@material-ui/core/Typography';
+import TvIcon from '@material-ui/icons/Tv';
 
-export class SeriesesPage extends React.Component<any, any> {
+export class SeriesPage extends React.Component<any, any> {
 
     state = {
         searchValue: "",
@@ -26,8 +27,8 @@ export class SeriesesPage extends React.Component<any, any> {
         return (
 
             <div>
-                <Header title="SERIESES PAGE" style={{ margin: "50px" }} />
-
+                <Header title="SERIES PAGE"/>
+                <TvIcon color="secondary" fontSize="large"/>
                 <Typography variant="h5" align="center" color="textSecondary" paragraph>
                     Search series
                 </Typography>
@@ -85,4 +86,4 @@ const mapDispatchToProps = (dispatch: any) => {
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(SeriesesPage)
+export default connect(mapStateToProps, mapDispatchToProps)(SeriesPage)

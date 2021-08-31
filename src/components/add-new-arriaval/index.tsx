@@ -21,7 +21,7 @@ export class AddNewArrivals extends React.Component<any, any> {
     return (
 
       <div>
-        <Header title="ADD NEW ARRIVALS" style={{ margin: "50px" }} />
+        <Header title="ADD NEW ARRIVALS" style={{ margin: "25px" }} />
 
         <Container component="main" maxWidth="xs">
           <CssBaseline />

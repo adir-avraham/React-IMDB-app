@@ -10,7 +10,7 @@ import Loader from '../loader';
 import SearchIcon from '@material-ui/icons/Search';
 import TextField from '@material-ui/core/TextField';
 import Typography from '@material-ui/core/Typography';
-
+import SportsEsportsIcon from '@material-ui/icons/SportsEsports';
 export class GamesPage extends React.Component<any, any> {
 
     state = {
@@ -24,7 +24,7 @@ export class GamesPage extends React.Component<any, any> {
         return (
             <div>
                 <Header title={"VIDEO GAMES PAGE"}/>
-
+                <SportsEsportsIcon color="secondary" fontSize="large"/>
                 <Typography variant="h5" align="center" color="textSecondary" paragraph>
                     Search games
                 </Typography>

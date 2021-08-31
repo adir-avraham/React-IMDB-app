@@ -4,7 +4,7 @@ import React from 'react';
 import SearchIcon from '@material-ui/icons/Search';
 import TextField from '@material-ui/core/TextField';
 import Typography from '@material-ui/core/Typography';
-
+import MovieIcon from '@material-ui/icons/Movie';
 
 export default class MovieSearch extends React.Component<any, any> {
 
@@ -17,9 +17,10 @@ export default class MovieSearch extends React.Component<any, any> {
 
         return (
             <div>
-                <Header title="MOVIES PAGE" style={{ margin: "50px" }} />
+                <Header title="MOVIES PAGE"/>
+                <MovieIcon color="secondary" fontSize="large"/>
                 <Typography variant="h5" align="center" color="textSecondary" paragraph>
-                    Search movie
+                    Search movies
             </Typography>
 
                 <TextField value={searchValue} onChange={(e) => {
